@@ -4,6 +4,9 @@ namespace codeChallenge.Domain.Entities
     {
         public int Id { get; set; }
         public string Type { get; set; }
-        public List<List<double>> Coordinates { get; set; }
+        public int PartnerId { get; set; }
+        public Partner Partner { get; set; }
+
+        public ICollection<Coordinates> Coordinates { get; set; }
     }
 }

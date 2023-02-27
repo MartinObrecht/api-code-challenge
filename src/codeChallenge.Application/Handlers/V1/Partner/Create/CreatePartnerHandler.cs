@@ -4,9 +4,9 @@ namespace codeChallenge.Application.Handlers.V1.Partner.Create
 {
     public class CreatePartnerHandler : IRequestHandler<CreatePartnerRequest, CreatePartnerResponse>
     {
-        public Task<CreatePartnerResponse> Handle(CreatePartnerRequest request, CancellationToken cancellationToken)
+        public async Task<CreatePartnerResponse> Handle(CreatePartnerRequest request, CancellationToken cancellationToken)
         {
-            throw new NotImplementedException();
+            return new CreatePartnerResponse(); //throw new NotImplementedException();
         }
     }
 }

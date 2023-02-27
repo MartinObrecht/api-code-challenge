@@ -8,7 +8,7 @@ namespace codeChallenge.Core.Extensions
     {
         public static void AddMediatRApi(this IServiceCollection services)
         {
-            services.AddMediatR(typeof(CreatePartnerHandler));
+            services.AddMediatR(configuration => configuration.RegisterServicesFromAssemblyContaining(typeof(CreatePartnerRequest)));
         }
     }
 }
