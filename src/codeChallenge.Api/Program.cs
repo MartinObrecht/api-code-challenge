@@ -1,7 +1,10 @@
 using codeChallenge.Core.Extensions;
 using codeChallenge.Core.Middlewares;
 using codeChallenge.Data;
+using codeChallenge.Data.Repositories;
+using codeChallenge.Domain.Interfaces.Repositories;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
 using Serilog;
 
 try
@@ -16,8 +19,14 @@ try
     // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
     builder.Services.AddEndpointsApiExplorer();
     builder.Services.AddSwaggerGen();
-    builder.Services.AddMediatRApi();
+
+    builder.Services.AddDbContext<CodeChallengeContext>(options =>
+    {
+        options.UseSqlServer(builder.Configuration.GetConnectionString("defaultConnection"));
+    });
+
     builder.Services.AddRepositories();
+    builder.Services.AddMediatRApi();
 
     var app = builder.Build();
 

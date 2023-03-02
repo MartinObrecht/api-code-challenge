@@ -15,6 +15,7 @@ namespace codeChallenge.Data.Configurations
 
             builder.Property(x => x.Id).ValueGeneratedOnAdd();
             builder.Property(x => x.Type).IsRequired().HasMaxLength(30);
+            builder.Property(x => x.Coordinates).IsRequired().HasMaxLength(50000);
         }
     }
 }

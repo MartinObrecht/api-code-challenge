@@ -1,3 +1,5 @@
+using codeChallenge.Data.Repositories;
+using codeChallenge.Domain.Interfaces.Repositories;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace codeChallenge.Core.Extensions
@@ -6,7 +8,9 @@ namespace codeChallenge.Core.Extensions
     {
         public static void AddRepositories(this IServiceCollection services)
         {
-            //services.AddScoped<IPartnerRepository, PartnerRepository>();
+            services.AddScoped<ICoverageAreaRepository, CoverageAreaRepository>();
+            services.AddScoped<IAddressRepository, AddressRepository>();
+            services.AddScoped<IPartnerRepository, PartnerRepository>();
         }
     }
 }

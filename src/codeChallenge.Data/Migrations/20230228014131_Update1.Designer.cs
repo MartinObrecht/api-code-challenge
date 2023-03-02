@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using codeChallenge.Data;
 
@@ -10,9 +11,11 @@ using codeChallenge.Data;
 namespace codeChallenge.Data.Migrations
 {
     [DbContext(typeof(CodeChallengeContext))]
-    partial class CodeChallengeContextModelSnapshot : ModelSnapshot
+    [Migration("20230228014131_Update1")]
+    partial class Update1
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

@@ -1,5 +1,4 @@
-using codeChallenge.Application.Handlers.V1.Partner.Create;
-using MediatR;
+using codeChallenge.Application.Handlers.V1.Partners.Create;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace codeChallenge.Core.Extensions
