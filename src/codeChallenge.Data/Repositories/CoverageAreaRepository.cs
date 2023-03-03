@@ -1,5 +1,6 @@
 using codeChallenge.Domain.Entities;
 using codeChallenge.Domain.Interfaces.Repositories;
+using Microsoft.EntityFrameworkCore;
 
 namespace codeChallenge.Data.Repositories
 {
@@ -26,6 +27,13 @@ namespace codeChallenge.Data.Repositories
             await _context.SaveChangesAsync();
 
             return coverageAreas;
+        }
+
+        public async Task<CoverageArea> GetCoverageAreaByPartnerId(int partnerId)
+        {
+            var coverageAreaPartner = await _context.CoverageArea?.FirstOrDefaultAsync(x => x.PartnerId == partnerId)!;
+
+            return coverageAreaPartner;
         }
     }
 }

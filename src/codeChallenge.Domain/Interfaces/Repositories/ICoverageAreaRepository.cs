@@ -6,5 +6,6 @@ namespace codeChallenge.Domain.Interfaces.Repositories
     {
         Task<CoverageArea> CreateCoverageAreaAsync(CoverageArea address);
         Task<List<CoverageArea>> CreateCoverageAreasAsync(List<CoverageArea> coverageAreas);
+        Task<CoverageArea> GetCoverageAreaByPartnerId(int partnerId);
     }
 }

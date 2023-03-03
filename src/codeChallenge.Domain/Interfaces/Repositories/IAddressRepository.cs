@@ -6,5 +6,6 @@ namespace codeChallenge.Domain.Interfaces.Repositories
     {
         Task<Address> CreateAddressAsync(Address address);
         Task<List<Address>> CreateAddressesAsync(List<Address> addresses);
+        Task<Address> GetAddressByPartnerId(int partnerId);
     }
 }

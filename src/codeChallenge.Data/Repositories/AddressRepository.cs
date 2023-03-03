@@ -1,5 +1,6 @@
 using codeChallenge.Domain.Entities;
 using codeChallenge.Domain.Interfaces.Repositories;
+using Microsoft.EntityFrameworkCore;
 
 namespace codeChallenge.Data.Repositories
 {
@@ -26,6 +27,13 @@ namespace codeChallenge.Data.Repositories
             await _context.SaveChangesAsync();
             
             return addresses;
+        }
+
+        public async Task<Address> GetAddressByPartnerId(int partnerId)
+        {
+            var addressPartner = await _context.Address?.FirstOrDefaultAsync(x => x.PartnerId == partnerId)!;
+
+            return addressPartner;
         }
     }
 }

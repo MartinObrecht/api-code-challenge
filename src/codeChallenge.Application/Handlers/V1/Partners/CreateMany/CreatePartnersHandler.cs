@@ -85,8 +85,7 @@ namespace codeChallenge.Application.Handlers.V1.Partners.CreateMany
                     new Address
                     {
                         Type = partner.Address.Type,
-                        Longitude = partner.Address.Coordinates[0],
-                        Latitude = partner.Address.Coordinates[1],
+                        Coordinates = JsonSerializer.Serialize(partner.Address.Coordinates),
                         PartnerId = partner.Id,
                     });
                 }

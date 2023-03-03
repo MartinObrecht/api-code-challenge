@@ -18,7 +18,7 @@ namespace codeChallenge.Data.Configurations
             builder.Property(x => x.Document).IsRequired().HasMaxLength(16);
 
             builder.HasOne(x => x.Addres).WithOne(x => x.Partner).HasForeignKey<Address>(p => p.PartnerId);
-            builder.HasMany(x => x.CoverageArea).WithOne(x => x.Partner);
+            builder.HasOne(x => x.CoverageArea).WithOne(x => x.Partner);
         
         }
     }

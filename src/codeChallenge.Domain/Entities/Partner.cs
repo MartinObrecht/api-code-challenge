@@ -6,7 +6,7 @@ namespace codeChallenge.Domain.Entities
         public string TradingName { get; set; }
         public string OwnerName { get; set; }
         public long Document { get; set; }
-        public ICollection<CoverageArea> CoverageArea { get; set; }
+        public CoverageArea CoverageArea { get; set; }
         public Address Addres { get; set; }
     }
 }

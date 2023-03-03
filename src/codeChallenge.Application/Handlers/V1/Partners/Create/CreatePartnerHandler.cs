@@ -56,8 +56,7 @@ namespace codeChallenge.Application.Handlers.V1.Partners.Create
             new Address
             {
                 Type = request.Address.Type,
-                Longitude = request.Address.Coordinates[0],
-                Latitude = request.Address.Coordinates[1],
+                Coordinates = JsonSerializer.Serialize(request.Address.Coordinates),
                 PartnerId = partnerId,
             };
 
