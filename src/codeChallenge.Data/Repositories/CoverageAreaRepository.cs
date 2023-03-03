@@ -19,5 +19,13 @@ namespace codeChallenge.Data.Repositories
 
             return coverageArea;
         }
+
+        public async Task<List<CoverageArea>> CreateCoverageAreasAsync(List<CoverageArea> coverageAreas)
+        {
+            await _context.CoverageArea.AddRangeAsync(coverageAreas);
+            await _context.SaveChangesAsync();
+
+            return coverageAreas;
+        }
     }
 }

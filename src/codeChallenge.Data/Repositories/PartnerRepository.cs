@@ -21,6 +21,14 @@ namespace codeChallenge.Data.Repositories
             return partner;
         }
 
+        public async Task<List<Partner>> CreatePartnersAsync(List<Partner> partners)
+        {
+            await _context.Partner.AddRangeAsync(partners);
+            await _context.SaveChangesAsync();
+
+            return partners;
+        }
+
         public Task<Partner> GetPartnerByAreaAsync(double longitude, double latitude)
         {
             throw new NotImplementedException();

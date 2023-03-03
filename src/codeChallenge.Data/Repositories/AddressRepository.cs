@@ -19,5 +19,13 @@ namespace codeChallenge.Data.Repositories
 
             return address;
         }
+
+        public async Task<List<Address>> CreateAddressesAsync(List<Address> addresses)
+        {
+            await _context.AddRangeAsync(addresses);
+            await _context.SaveChangesAsync();
+            
+            return addresses;
+        }
     }
 }

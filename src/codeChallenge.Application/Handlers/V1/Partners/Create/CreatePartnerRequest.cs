@@ -5,6 +5,7 @@ namespace codeChallenge.Application.Handlers.V1.Partners.Create
 {
     public class CreatePartnerRequest : IRequest<CreatePartnerResponse>
     {
+        public int Id { get; set; }
         public string TradingName { get; set; }
         public string OwnerName { get; set; }
         public string Document { get; set; }
