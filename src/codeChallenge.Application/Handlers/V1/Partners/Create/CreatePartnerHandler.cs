@@ -12,7 +12,9 @@ namespace codeChallenge.Application.Handlers.V1.Partners.Create
         private readonly ICoverageAreaRepository _coverageAreaRepository;
         private readonly IAddressRepository _addressRepository;
 
-        public CreatePartnerHandler(IPartnerRepository partnerRepository, ICoverageAreaRepository coverageAreaRepository, IAddressRepository addressRepository)
+        public CreatePartnerHandler(IPartnerRepository partnerRepository, 
+                                    ICoverageAreaRepository coverageAreaRepository,
+                                    IAddressRepository addressRepository)
         {
             _partnerRepository = partnerRepository;
             _coverageAreaRepository = coverageAreaRepository;
@@ -21,35 +23,43 @@ namespace codeChallenge.Application.Handlers.V1.Partners.Create
 
         public async Task<CreatePartnerResponse> Handle(CreatePartnerRequest request, CancellationToken cancellationToken)
         {
+            Partner partner = BuildPartner(request);
+            partner = await _partnerRepository.CreatePartnerAsync(partner);
 
-            Partner partner = new Partner
+            CoverageArea coverageArea = BuildCoverageArea(request, partner.Id);
+
+            Address address = BuildAddress(request, partner.Id);
+            
+            await _coverageAreaRepository.CreateCoverageAreaAsync(coverageArea);
+            await _addressRepository.CreateAddressAsync(address);
+
+            return new CreatePartnerResponse { Success = true, StatusCode = 201, Message = "Partner Created" };
+        }
+        
+        private static Partner BuildPartner(CreatePartnerRequest request) =>
+            new Partner
             {
                 TradingName = request.TradingName,
                 OwnerName = request.OwnerName,
                 Document = request.Document.OnlyNumbers().ToLong(),
             };
-            
-            partner = await _partnerRepository.CreatePartnerAsync(partner);
-
-            CoverageArea coverageArea = new CoverageArea
+        
+        private static CoverageArea BuildCoverageArea(CreatePartnerRequest request, int partnerId) =>
+            new CoverageArea
             {
-                PartnerId = partner.Id,
+                PartnerId = partnerId,
                 Type = request.CoverageArea.Type,
-                Coordinates = JsonSerializer.Serialize(request.CoverageArea.Coordinates)
+                Coordinates = JsonSerializer.Serialize(request.CoverageArea.Coordinates),
             };
-
-            Address address = new Address
+        
+        private static Address BuildAddress(CreatePartnerRequest request, int partnerId) =>
+            new Address
             {
                 Type = request.Address.Type,
                 Longitude = request.Address.Coordinates[0],
                 Latitude = request.Address.Coordinates[1],
-                PartnerId = partner.Id
+                PartnerId = partnerId,
             };
 
-            await _coverageAreaRepository.CreateCoverageAreaAsync(coverageArea);
-            await _addressRepository.CreateAddressAsync(address);
-
-            return new CreatePartnerResponse { Sucess = true, StatusCode = 201,  Message = "Partner Created"};
-        }
     }
 }

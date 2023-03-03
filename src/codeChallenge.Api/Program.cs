@@ -1,10 +1,7 @@
 using codeChallenge.Core.Extensions;
 using codeChallenge.Core.Middlewares;
 using codeChallenge.Data;
-using codeChallenge.Data.Repositories;
-using codeChallenge.Domain.Interfaces.Repositories;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Options;
 using Serilog;
 
 try
