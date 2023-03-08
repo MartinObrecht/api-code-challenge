@@ -1,7 +1,5 @@
 using codeChallenge.Core.Extensions;
 using codeChallenge.Core.Middlewares;
-using codeChallenge.Data;
-using Microsoft.EntityFrameworkCore;
 using Serilog;
 
 try
@@ -17,20 +15,10 @@ try
     builder.Services.AddEndpointsApiExplorer();
     builder.Services.AddSwaggerGen();
 
-    builder.Services.AddDbContext<CodeChallengeContext>(options =>
-    {
-        options.UseSqlServer(builder.Configuration.GetConnectionString("defaultConnection"));
-    });
-
     builder.Services.AddRepositories();
     builder.Services.AddMediatRApi();
 
     var app = builder.Build();
-
-    using (var serviceScope = app.Services.CreateAsyncScope())
-    {
-        serviceScope.ServiceProvider.GetService<CodeChallengeContext>().Database.Migrate();
-    }
 
     // Configure the HTTP request pipeline.
     if (app.Environment.IsDevelopment())
