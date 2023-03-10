@@ -1,11 +1,11 @@
 
 using codeChallenge.Application.Handlers.V1.Partners.Create.Dtos;
 
-namespace codeChallenge.Application.Handlers.V1.Partners.Queries
+namespace codeChallenge.Application.Handlers.V1.Partners.GetPartnerById
 {
     public class GetPartnerByIdResponse
     {
-        public int Id { get; set; }
+        public string Id { get; set; }
         public string TradingName { get; set; }
         public string OwnerName { get; set; }
         public string Document { get; set; }

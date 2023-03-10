@@ -18,10 +18,14 @@ namespace codeChallenge.Application.Handlers.V1.Partners.CreateMany
             List<Partner> partners = new List<Partner>();
 
             BuildPartners(request, partners);
-            partners = await _partnerRepository.CreatePartnersAsync(partners);
+            bool success = await _partnerRepository.CreatePartnersAsync(partners);
 
+            if (success)
+            {
+                return new CreatePartnersResponse { Success = true, StatusCode = 201, Message = $"{partners.Count} Partners Created" };
+            }
 
-            return new CreatePartnersResponse { Success = true, StatusCode = 201, Message = $"{partners.Count} Partners Created" };
+            return new CreatePartnersResponse { Success = false, StatusCode = 200, Message = $"Partners not Created" };
         }
 
         private static List<Partner> BuildPartners(CreatePartnersRequest request, List<Partner> partners)
@@ -33,7 +37,9 @@ namespace codeChallenge.Application.Handlers.V1.Partners.CreateMany
                     {
                         TradingName = partner.TradingName,
                         OwnerName = partner.OwnerName,
-                        Document = partner.Document.OnlyNumbers().ToLong()
+                        Document = partner.Document.OnlyNumbers(),
+                        CoverageArea = new CoverageArea { Type = partner.CoverageArea.Type, Coordinates = partner.CoverageArea.Coordinates },
+                        Address = new Address { Type = partner.Address.Type, Coordinates = partner.Address.Coordinates }
                     });
             }
 

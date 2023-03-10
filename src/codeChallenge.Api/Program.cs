@@ -1,5 +1,6 @@
 using codeChallenge.Core.Extensions;
 using codeChallenge.Core.Middlewares;
+using codeChallenge.Data.Models;
 using Serilog;
 
 try
@@ -15,6 +16,7 @@ try
     builder.Services.AddEndpointsApiExplorer();
     builder.Services.AddSwaggerGen();
 
+    builder.Services.Configure<ChallengeDatabaseSettings>(builder.Configuration.GetSection("ChallengeDatabase"));
     builder.Services.AddRepositories();
     builder.Services.AddMediatRApi();
 

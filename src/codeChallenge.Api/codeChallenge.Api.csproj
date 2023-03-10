@@ -8,8 +8,8 @@
 
   <ItemGroup>
     <ProjectReference Include="..\codeChallenge.Application\codeChallenge.Application.csproj" />
+    <ProjectReference Include="..\codeChallenge.Domain\codeChallenge.Domain.csproj" />
     <ProjectReference Include="..\codeChallenge.Core\codeChallenge.Core.csproj" />
-    <ProjectReference Include="..\codeChallenge.Data\codeChallenge.Data.csproj" />
   </ItemGroup>
 
 </Project>

@@ -1,9 +1,8 @@
 using codeChallenge.Application.Handlers.V1.Partners.Create.Dtos;
-using MediatR;
 
-namespace codeChallenge.Application.Handlers.V1.Partners.Create
+namespace codeChallenge.Application.Handlers.V1.Partners.GetPartnerByCoordinates
 {
-    public class CreatePartnerRequest : IRequest<CreatePartnerResponse>
+    public class GetPartnerByCoordinatesResponse
     {
         public string Id { get; set; }
         public string TradingName { get; set; }
