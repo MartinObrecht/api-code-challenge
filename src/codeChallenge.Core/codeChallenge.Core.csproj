@@ -8,7 +8,6 @@
 
   <ItemGroup>
     <PackageReference Include="MediatR" Version="12.0.1" />
-    <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="11.1.0" />
     <PackageReference Include="Serilog.Enrichers.CorrelationId" Version="3.0.1" />
     <PackageReference Include="Serilog.Sinks.Async" Version="1.5.0" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
@@ -18,7 +17,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\codeChallenge.Domain\codeChallenge.Domain.csproj" />
     <ProjectReference Include="..\codeChallenge.Application\codeChallenge.Application.csproj" />
   </ItemGroup>
+
 
 </Project>

@@ -6,10 +6,15 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
-
   <ItemGroup>
     <PackageReference Include="MediatR" Version="12.0.1" />
+    <PackageReference Include="NetTopologySuite" Version="2.5.0" />
     <PackageReference Include="Serilog.AspNetCore" Version="6.1.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\codeChallenge.Data\codeChallenge.Data.csproj" />
+    <ProjectReference Include="..\codeChallenge.Domain\codeChallenge.Domain.csproj" />
   </ItemGroup>
 
 </Project>

@@ -1,3 +1,5 @@
+using Xunit;
+
 namespace codeChallenge.Tests;
 
 public class UnitTest1
